@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="detail-page">
+
+        <div class="detail-breadcrumb">
+            <a href="index.html">Trang chủ</a>
+            / Điện thoại
+            / <span id="detail-breadcrumb-name">Chi tiết sản phẩm</span>
+        </div>
+
+        <section class="detail-layout">
+
+            <!-- Ảnh sản phẩm -->
+            <div class="detail-image-box">
+                <img
+                    src="images/phone1.png"
+                    alt="Ảnh sản phẩm"
+                    class="detail-image"
+                    id="detail-image"
+                >
+            </div>
+
+            <!-- Thông tin sản phẩm -->
+            <div class="detail-info">
+
+                <h1 id="detail-name">Tên sản phẩm</h1>
+
+                <p>Thương hiệu: <span id="detail-brand"></span></p>
+
+                <p class="detail-status">Tình trạng: Còn hàng</p>
+
+                <div class="detail-price">
+                    <span id="detail-price"></span>
+                    <span class="detail-old-price" id="detail-old-price"></span>
+                </div>
+
+                <div class="detail-description">
+                    <h2>Mô tả sản phẩm</h2>
+                    <p id="detail-description"></p>
+                </div>
+
+                <button
+                    class="detail-buy"
+                    type="button"
+                    onclick="alert('Bạn đã chọn mua sản phẩm!')"
+                >
+                    Mua ngay
+                </button>
+
+                <a href="index.html" class="detail-back">
+                    ← Quay lại danh sách sản phẩm
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- Thông số kỹ thuật -->
+        <section class="detail-spec">
+            <h2>Thông số kỹ thuật</h2>
+
+            <p><strong>Màn hình:</strong> <span id="detail-screen"></span></p>
+            <p><strong>Bộ xử lý:</strong> <span id="detail-chip"></span></p>
+            <p><strong>Bộ nhớ:</strong> <span id="detail-storage"></span></p>
+            <p><strong>Thương hiệu:</strong> <span id="detail-brand-spec"></span></p>
+        </section>
+
+    </main>
+
+    <script>
+        // Danh sách dữ liệu của 8 sản phẩm
+        const products = {
+            1: {
+                name: "iPhone 16 Pro Max 256GB",
+                image: "images/phone1.png",
+                brand: "Apple",
+                price: "30.990.000đ",
+                oldPrice: "34.990.000đ",
+                screen: '6.9 inch',
+                chip: "Apple A18 Pro",
+                storage: "256GB",
+                description: "iPhone 16 Pro Max có màn hình lớn, thiết kế cao cấp và hiệu năng mạnh mẽ, phù hợp cho học tập, làm việc và giải trí."
+            },
+
+            2: {
+                name: "Samsung Galaxy S24 Ultra 256GB",
+                image: "images/phone2.png",
+                brand: "Samsung",
+                price: "22.990.000đ",
+                oldPrice: "29.990.000đ",
+                screen: '6.8 inch',
+                chip: "Snapdragon 8 Gen 3",
+                storage: "256GB",
+                description: "Samsung Galaxy S24 Ultra sở hữu màn hình lớn, hiệu năng mạnh và hệ thống camera phục vụ nhiều nhu cầu sử dụng."
+            },
+
+            3: {
+                name: "Xiaomi 14T 5G 256GB",
+                image: "images/phone3.png",
+                brand: "Xiaomi",
+                price: "11.990.000đ",
+                oldPrice: "13.490.000đ",
+                screen: '6.67 inch',
+                chip: "Dimensity 8300",
+                storage: "256GB",
+                description: "Xiaomi 14T 5G là điện thoại hướng đến hiệu năng tốt, màn hình lớn và nhu cầu giải trí hằng ngày."
+            },
+
+            4: {
+                name: "OPPO Reno12 F 5G 256GB",
+                image: "images/phone4.png",
+                brand: "OPPO",
+                price: "8.490.000đ",
+                oldPrice: "9.690.000đ",
+                screen: '6.67 inch',
+                chip: "Dimensity 6300",
+                storage: "256GB",
+                description: "OPPO Reno12 F 5G có thiết kế hiện đại, màn hình lớn và đáp ứng tốt các nhu cầu sử dụng phổ biến."
+            },
+
+            5: {
+                name: "vivo V40 5G 256GB",
+                image: "images/phone5.png",
+                brand: "vivo",
+                price: "10.490.000đ",
+                oldPrice: "11.390.000đ",
+                screen: '6.78 inch',
+                chip: "Snapdragon 7 Gen 3",
+                storage: "256GB",
+                description: "vivo V40 5G có màn hình lớn và hiệu năng phù hợp cho nhu cầu sử dụng, giải trí và chụp ảnh."
+            },
+
+            6: {
+                name: "iPhone 15 128GB",
+                image: "images/phone6.png",
+                brand: "Apple",
+                price: "17.490.000đ",
+                oldPrice: "21.290.000đ",
+                screen: '6.1 inch',
+                chip: "Apple A16 Bionic",
+                storage: "128GB",
+                description: "iPhone 15 có thiết kế gọn gàng, hiệu năng ổn định và phù hợp cho nhu cầu sử dụng hằng ngày."
+            },
+
+            7: {
+                name: "Samsung Galaxy A55 5G 128GB",
+                image: "images/phone7.png",
+                brand: "Samsung",
+                price: "9.490.000đ",
+                oldPrice: "11.190.000đ",
+                screen: '6.6 inch',
+                chip: "Exynos 1480",
+                storage: "128GB",
+                description: "Samsung Galaxy A55 5G là lựa chọn cho nhu cầu học tập, liên lạc, giải trí và sử dụng mạng 5G."
+            },
+
+            8: {
+                name: "realme 12 Pro 5G 256GB",
+                image: "images/phone8.png",
+                brand: "realme",
+                price: "7.990.000đ",
+                oldPrice: "10.190.000đ",
+                screen: '6.7 inch',
+                chip: "Snapdragon 6 Gen 1",
+                storage: "256GB",
+                description: "realme 12 Pro 5G có màn hình lớn, thiết kế hiện đại và đáp ứng các nhu cầu sử dụng hằng ngày."
+            }
+        };
+
+        // Đọc mã sản phẩm từ URL, ví dụ product-detail.html?id=1
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get("id") || "1";
+
+        // Lấy dữ liệu của sản phẩm được chọn
+        const product = products[productId];
+
+        if (product) {
+            document.title = product.name + " - CellphoneS";
+
+            document.getElementById("detail-breadcrumb-name").textContent = product.name;
+            document.getElementById("detail-image").src = product.image;
+            document.getElementById("detail-image").alt = product.name;
+            document.getElementById("detail-name").textContent = product.name;
+            document.getElementById("detail-brand").textContent = product.brand;
+            document.getElementById("detail-price").textContent = product.price;
+            document.getElementById("detail-old-price").textContent = product.oldPrice;
+            document.getElementById("detail-screen").textContent = product.screen;
+            document.getElementById("detail-chip").textContent = product.chip;
+            document.getElementById("detail-storage").textContent = product.storage;
+            document.getElementById("detail-brand-spec").textContent = product.brand;
+            document.getElementById("detail-description").textContent = product.description;
+        } else {
+            document.querySelector(".detail-page").innerHTML =
+                '<h2>Không tìm thấy sản phẩm</h2><a href="index.html">Quay lại trang chủ</a>';
+        }
+    </script>
+
+</body>
+</html>
