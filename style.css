@@ -33,6 +33,7 @@ img {
     padding: 0 10px;
 }
 
+
 /* ===== HEADER ===== */
 .header {
     background-color: #d70018;
@@ -456,5 +457,340 @@ tr:hover {
     }
     .footer-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ===== MEGA MENU DANH MỤC ===== */
+
+.top-section {
+    position: relative;
+}
+
+.sidebar {
+    position: static;
+    z-index: 20;
+}
+
+.sidebar > ul {
+    height: 100%;
+}
+
+.sidebar > ul > li {
+    position: static;
+}
+
+/* Căn chỉnh từng danh mục bên trái */
+.sidebar > ul > li > a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 49px;
+    padding: 10px 15px;
+    border-radius: 0;
+}
+
+/* Mũi tên bên phải */
+.sidebar > ul > li > a > b {
+    margin-left: auto;
+    color: #9ca3af;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+/* Icon danh mục */
+.menu-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    flex-shrink: 0;
+    font-size: 17px;
+}
+
+/* Đổi màu khi di chuột vào danh mục */
+.sidebar > ul > li:hover > a,
+.sidebar > ul > li:focus-within > a {
+    background-color: #fdecea;
+    color: #d70018;
+}
+
+/* Khung menu con */
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 220px;
+    right: 0;
+    z-index: 50;
+
+    min-height: 100%;
+    max-height: 560px;
+    overflow-y: auto;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    padding: 20px;
+
+    background-color: #fff;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Hiện menu con khi hover */
+.sidebar > ul > li:hover > .mega-menu,
+.sidebar > ul > li:focus-within > .mega-menu {
+    display: grid;
+}
+
+/* Từng cột trong menu con */
+.mega-column {
+    min-width: 0;
+}
+
+/* Tiêu đề mỗi cột */
+.mega-column h3 {
+    margin: 0 0 12px;
+    color: #222;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Khoảng cách giữa các nhóm */
+.mega-column .subheading {
+    margin-top: 22px;
+}
+
+/* Bố cục thương hiệu và nút sản phẩm */
+.brand-grid,
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 8px;
+}
+
+/* Nút thương hiệu và sản phẩm */
+.brand-grid a,
+.chip-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 9px 11px;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 7px;
+
+    background-color: #fff;
+    color: #222;
+    font-size: 13px;
+    line-height: 1.35;
+
+    transition: border-color 0.2s,
+                color 0.2s,
+                background-color 0.2s;
+}
+
+/* Nút thương hiệu */
+.brand-grid a {
+    min-width: 84px;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Hiệu ứng hover cho nút */
+.brand-grid a:hover,
+.chip-list a:hover {
+    border-color: #d70018;
+    color: #d70018;
+    background-color: #fff8f8;
+}
+
+/*RESPONSIVE CHO MEGA MENU */
+
+@media (max-width: 992px) {
+    .mega-menu {
+        left: 0;
+        right: 0;
+        top: 100%;
+
+        max-height: 65vh;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-radius: 10px;
+    }
+
+    .sidebar > ul > li > .mega-menu {
+        display: none;
+    }
+
+    .sidebar > ul > li:hover > .mega-menu,
+    .sidebar > ul > li:focus-within > .mega-menu {
+        display: grid;
+    }
+}
+
+@media (max-width: 576px) {
+    .mega-menu {
+        grid-template-columns: 1fr;
+        padding: 14px;
+        gap: 18px;
+    }
+}
+
+/* ===== REVIEW SẢN PHẨM BẰNG VIDEO YOUTUBE ===== */
+
+.review-section {
+    margin-top: 20px;
+    padding: 15px 0;
+}
+
+/* Tiêu đề REVIEW SẢN PHẨM */
+.review-title {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.review-title h2 {
+    font-size: 22px;
+    color: #222;
+    font-weight: bold;
+}
+
+.review-title > a {
+    padding-left: 25px;
+    border-left: 1px solid #ddd;
+    color: #0b5ed7;
+    font-size: 14px;
+}
+
+.review-title > a span {
+    margin-left: 10px;
+}
+
+/* Lưới 4 video */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+/* Thẻ review */
+.review-card {
+    min-width: 0;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Khung video dọc */
+.review-video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    background-color: #222;
+}
+
+.review-video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Thông tin sản phẩm bên dưới video */
+.review-product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    min-height: 90px;
+}
+
+.review-product img {
+    width: 62px;
+    height: 70px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.review-info {
+    min-width: 0;
+}
+
+.review-info h3 {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+
+    /* Giới hạn tên sản phẩm trong 2 dòng */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.review-price {
+    color: #d70018;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .review-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+}
+
+/* Điện thoại */
+@media (max-width: 576px) {
+    .review-title h2 {
+        font-size: 18px;
+    }
+
+    .review-title {
+        gap: 12px;
+    }
+
+    .review-title > a {
+        padding-left: 12px;
+    }
+
+    .review-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .review-card {
+        border-radius: 12px;
+    }
+
+    .review-product {
+        gap: 6px;
+        padding: 8px;
+    }
+
+    .review-product img {
+        width: 45px;
+        height: 55px;
+    }
+
+    .review-info h3 {
+        font-size: 12px;
+    }
+
+    .review-price {
+        font-size: 13px;
     }
 }
